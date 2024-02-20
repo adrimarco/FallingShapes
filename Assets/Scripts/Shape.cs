@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Shape : MonoBehaviour
 {
+    /* INHERITANCE
+     *  Base class for all shapes, which include all basic variables and methods.
+     */
+
     protected   int     m_value;
     [SerializeField]
     protected   float   movementSpeed;
