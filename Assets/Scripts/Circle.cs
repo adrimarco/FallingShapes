@@ -17,6 +17,8 @@ public class Circle : Shape
      *  - Override Update() to apply additional movement when it is split in two.
      */
     public override void Pop() {
+        if (GameManager.Instance.GameEnded) return;
+
         if(exploded) { 
             base.Pop();
         }
@@ -43,12 +45,14 @@ public class Circle : Shape
 
         this.TransformToExplodedCircle();
         secondCircle.TransformToExplodedCircle();
+
+        secondCircle.Value = this.Value;
     }
 
     private void TransformToExplodedCircle() { 
         exploded = true;
 
-        transform.localScale /= 2;
+        transform.localScale /= 1.5f;
     }
 
     private void UpdateOffset() {

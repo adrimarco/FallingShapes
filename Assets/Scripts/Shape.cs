@@ -36,6 +36,8 @@ public class Shape : MonoBehaviour
     }
 
     public virtual void Pop() {
+        if (GameManager.Instance.GameEnded) return;
+
         GameManager.Instance.IncreaseScore(Value);
 
         Destroy(gameObject);

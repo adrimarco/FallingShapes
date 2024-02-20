@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
      *  - Score set prevents m_score from being negative
      */
     public static   GameManager Instance { get; private set; }
+    [SerializeField]
+    private Spawner             spawner;
     public  bool                GameEnded {  get; private set; }
     private int                 m_score;
     private float               remainingTime;
@@ -55,9 +57,17 @@ public class GameManager : MonoBehaviour
     private void UpdateRemainingTime() {
         remainingTime -= Time.deltaTime;
 
-        if(remainingTime <= 0f && !GameEnded) { 
+        if(remainingTime <= 0f) { 
             GameFinished();
         }
+        else if(spawner != null)
+        {
+            if      (remainingTime <= 5)    spawner.SetSpawnInterval(0.2f);
+            else if (remainingTime <= 15)   spawner.SetSpawnInterval(0.5f);
+            else if (remainingTime <= 30)   spawner.SetSpawnInterval(0.7f);
+            else if (remainingTime <= 45)   spawner.SetSpawnInterval(1f);
+        }
+
     }
 
     /* ABSTRACTION
