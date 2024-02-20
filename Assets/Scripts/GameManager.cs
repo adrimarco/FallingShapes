@@ -13,13 +13,13 @@ public class GameManager : MonoBehaviour
      *  - So does GameEnded
      *  - Score set prevents m_score from being negative
      */
-    public  GameManager     Instance { get; private set; }
-    public  bool            GameEnded {  get; private set; }
-    private int             m_score;
-    private float           remainingTime;
+    public static   GameManager Instance { get; private set; }
+    public  bool                GameEnded {  get; private set; }
+    private int                 m_score;
+    private float               remainingTime;
 
     // Properties
-    public  int             Score
+    public  int     Score
     {
         get { return m_score; }
         set { m_score = Math.Max(value, 0); }
