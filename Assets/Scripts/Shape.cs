@@ -54,6 +54,8 @@ public class Shape : MonoBehaviour
     }
 
     protected virtual void Rotate() {
+        if (rotationSpeed == 0) return;
+
         transform.Rotate(Vector3.forward * Mathf.PI * Time.deltaTime);
         Quaternion rot = Quaternion.AngleAxis(rotationSpeed * Time.deltaTime, Vector3.up);
 
